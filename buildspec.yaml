@@ -1,0 +1,19 @@
+version: 0.2
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - $(aws ecr get-login -- no-include-email --region $AWS_DEFAULT_REGION)
+  build:
+    commands:
+      - echo Build started on 'date'
+      - echo Building and pushing the Docker image...
+      - docker build -t myweb_api .
+      - docker tag myweb_api:latest 517574620103.dkr.ecr.us-east-1.amazonaws.com/myweb_api:latest
+      - docker push 517574620103.dkr.ecr.us-east-1.amazonaws.com/myweb_api:latest
+  post_build:
+    commands:
+      - echo Build completed and image pushed to ECR on 'date'
+      - echo Updating lambda...
+      - aws lambda update-function-code --function-name webapi_docker --image-uri 517574620103.dkr.ecr.us-east-1.amazonaws.com/myweb_api:latest
+      - echo Complete!
