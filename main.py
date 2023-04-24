@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
 from mangum import Mangum
 
 app = FastAPI()   # create FastAPI instance
@@ -12,7 +13,7 @@ async def root():          # will be run if a get request is made to the path "/
     <body>
         <h1>Welcome To My Page</h1>
         <p>You may be wondering why this, rather blank (for now) webpage, exists.</p>
-        <p>Well, click <a href="/page">here</a> to find out a little more.</p>
+        <p>Well, click <a href="/info">here</a> to find out a little more.</p>
     </body>
     </html>
     """
@@ -25,16 +26,18 @@ async def page():          # will be run if a get request is made to the path "/
     <body>
         <h1>What's this all about?</h1>
         <p>I created this page after learning a bit about FastAPI in python.
-        <br>I wanted to try using FastAPI to create a simple webapp which would be live, hosted on serverless AWS.
-        <br>I have used this webapp to practise a few things:
-        <ul>
-            <li>FastAPI</li>
-            <li>AWS Lambda serverless hosting</li>
-            <li>AWS Route 53 DNS</li>
-            <li>AWS API Gateway (to set up a connection between Route 53 and lambda)</li>
-            <li>Building and deploying Docker images</li>
-            <li>Setting up CI/CD pipelines using AWS CodeBuild</li>
+        <br>I wanted to have a go at using FastAPI to create a simple webapp which would be live, hosted on serverless AWS.
+        <br>Using this project, I have been able to practise a few things:
+            <ul>
+                <li>FastAPI</li>
+                <li>AWS Lambda serverless hosting</li>
+                <li>AWS Route 53 DNS</li>
+                <li>AWS API Gateway (to set up a connection between Route 53 and lambda)</li>
+                <li>Building and deploying Docker images</li>
+                <li>Setting up CI/CD pipelines using AWS CodeBuild</li>
+                <li>Some basic html (I'm still in the process of that, as I'm sure you can tell)</li>
             </ul>
+        <img src="imgs/webapp_pipeline.png" width="1300">
         </p>
     </body>
     </html>
