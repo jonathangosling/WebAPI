@@ -37,7 +37,7 @@ async def page():          # will be run if a get request is made to the path "/
                 <li>Setting up CI/CD pipelines using AWS CodeBuild</li>
                 <li>Some basic html (I'm still in the process of that, as I'm sure you can tell)</li>
             </ul>
-        <img src="imgs/webapp_pipeline.png" width="1300">
+        <img src="/imgs/webapp_pipeline.png" width="1300">
         </p>
     </body>
     </html>
