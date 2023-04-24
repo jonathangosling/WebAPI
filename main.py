@@ -11,7 +11,7 @@ async def root():          # will be run if a get request is made to the path "/
     <html>
     <body>
         <h1>Welcome...</h1>
-        <p>Site under development, please come back later :)</p>
+        <p>Site under development, please come back later :) </p>
         <p>Click <a href="/page">here</a> to test my redirection.</p>
     </body>
     </html>
