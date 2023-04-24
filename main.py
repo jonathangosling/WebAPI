@@ -5,7 +5,7 @@ from mangum import Mangum
 
 app = FastAPI()   # create FastAPI instance
 handler = Mangum(app) # handler for running on AWS Lambda
-app.mount("/imgs", StaticFiles(directory="/imgs"), name='images')
+#app.mount("/imgs", StaticFiles(directory="/imgs"), name='images')
 
 @app.get("/")    # define path operation decorator. Tells the FastAPI that function right below is responsible for handling requests that go to the path "/" using a get operation
 async def root():          # will be run if a get request is made to the path "/" i.e. just the root in this case
@@ -39,7 +39,7 @@ async def page():          # will be run if a get request is made to the path "/
                 <li>Setting up CI/CD pipelines using AWS CodeBuild</li>
                 <li>Some basic html (I'm still in the process of that, as I'm sure you can tell)</li>
             </ul>
-            <img src="/imgs/webapp_pipeline.png" width="1300">
+            <img src="https://my-webpage-images.s3.amazonaws.com/webapp_pipeline.png" width="1300">
         </p>
     </body>
     </html>
