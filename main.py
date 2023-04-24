@@ -13,7 +13,7 @@ async def root():          # will be run if a get request is made to the path "/
     <html>
     <body>
         <h1>Welcome To My Page</h1>
-        <p>You may be wondering why this, rather blank (for now) webpage, exists.</p>
+        <p>You may be wondering why this, rather blank (for now), webpage exists.</p>
         <p>Well, click <a href="/info">here</a> to find out a little more.
         </p>
     </body>
