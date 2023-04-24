@@ -14,7 +14,8 @@ async def root():          # will be run if a get request is made to the path "/
     <body>
         <h1>Welcome To My Page</h1>
         <p>You may be wondering why this, rather blank (for now) webpage, exists.</p>
-        <p>Well, click <a href="/info">here</a> to find out a little more.</p>
+        <p>Well, click <a href="/info">here</a> to find out a little more.
+        </p>
     </body>
     </html>
     """
@@ -38,7 +39,7 @@ async def page():          # will be run if a get request is made to the path "/
                 <li>Setting up CI/CD pipelines using AWS CodeBuild</li>
                 <li>Some basic html (I'm still in the process of that, as I'm sure you can tell)</li>
             </ul>
-        <img src="/imgs/webapp_pipeline.png" width="1300">
+            <img src="/imgs/webapp_pipeline.png" width="1300">
         </p>
     </body>
     </html>
