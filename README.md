@@ -177,6 +177,6 @@ Anyway, here's some links to even more details:
 
     Using the command
 
-    aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 517574620103.dkr.ecr.us-east-1.amazonaws.com
+    aws ecr get-login-password --region \<your-availability-zone\> | docker login --username AWS --password-stdin \<your-aws-account-number\>.dkr.ecr.\<your-availability-zone\>.amazonaws.com
 
     Solves all.
