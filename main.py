@@ -40,6 +40,7 @@ async def page():          # will be run if a get request is made to the path "/
                 <li>Some basic html (I'm still in the process of that, as I'm sure you can tell)</li>
             </ul>
             Here's a schematic of the pipeline:
+            <br>
             <img src="https://my-webpage-images.s3.amazonaws.com/webapp_pipeline.png" width="1300">
         </p>
     </body>
