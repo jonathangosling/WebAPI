@@ -7,18 +7,13 @@ app = FastAPI()   # create FastAPI instance
 handler = Mangum(app) # handler for running on AWS Lambda
 #app.mount("/imgs", StaticFiles(directory="/imgs"), name='images')
 
+with open('Front_Page.txt', 'r') as file:
+    front_page_html = file.read().replace('\n','')
+print(front_page_html)
+
 @app.get("/")    # define path operation decorator. Tells the FastAPI that function right below is responsible for handling requests that go to the path "/" using a get operation
 async def root():          # will be run if a get request is made to the path "/" i.e. just the root in this case
-    html_content = """
-    <html>
-    <body>
-        <h1>Welcome To My Page</h1>
-        <p>You may be wondering why this, rather blank (for now), webpage exists.</p>
-        <p>Well, click <a href="/info">here</a> to find out a little more.
-        </p>
-    </body>
-    </html>
-    """
+    html_content = front_page_html
     return HTMLResponse(content=html_content, status_code=200)
 
 @app.get("/info")    # define path operation decorator. Tells the FastAPI that function right below is responsible for handling requests that go to the path "/" using a get operation
