@@ -16,6 +16,8 @@
         Here's a schematic of the pipeline:
         <br>
         <img src="https://my-webpage-images.s3.amazonaws.com/webapp_pipeline.png" width="1300">
+        <br>
+        Visit my <a href="https://github.com/jonathangosling/WebAPI">github</a> for more.
     </p>
 </body>
 </html>
