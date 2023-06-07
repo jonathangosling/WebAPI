@@ -1,0 +1,21 @@
+<html>
+<body>
+    <h1>What's this all about?</h1>
+    <p>I created this page after learning a bit about FastAPI in python.
+    <br>I wanted to have a go at using FastAPI to create a simple webapp which would be hosted on serverless AWS.
+    <br>Using this project, I have been able to practise a few things:
+        <ul>
+            <li>FastAPI</li>
+            <li>AWS Lambda serverless hosting</li>
+            <li>AWS Route 53 DNS</li>
+            <li>AWS API Gateway (to set up a connection between Route 53 and lambda)</li>
+            <li>Building and deploying Docker images</li>
+            <li>Setting up CI/CD pipelines using AWS CodeBuild</li>
+            <li>Some basic html (I'm still in the process of that, as I'm sure you can tell)</li>
+        </ul>
+        Here's a schematic of the pipeline:
+        <br>
+        <img src="https://my-webpage-images.s3.amazonaws.com/webapp_pipeline.png" width="1300">
+    </p>
+</body>
+</html>
