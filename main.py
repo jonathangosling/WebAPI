@@ -9,7 +9,7 @@ handler = Mangum(app) # handler for running on AWS Lambda
 
 @app.get("/")    # define path operation decorator. Tells the FastAPI that function right below is responsible for handling requests that go to the path "/" using a get operation
 async def root():          # will be run if a get request is made to the path "/" i.e. just the root in this case
-    with open('Front_Page.txt', 'r') as file:
+    with open('./Front_Page.txt', 'r') as file:
         html_content = file.read().replace('\n','')
     # html_content = '''<html>
     # <body>
