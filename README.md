@@ -12,8 +12,8 @@ More info can be found at https://jonathangosling.co.uk
 5. Simply pass the FastAPI app object into Mangum function: handler = Mangum(app)
 
 ## Create Lambda function
-1. In Lambda, 'Create function' with a 'Python \<version\>' runtime
-2. In 'runtime setting' 'edit' the handler to \<python file name\>.\<handler name\> (e.g. main.handler) so that lambda can locate the handler once files uploaded
+1. In Lambda, 'Create function' with a 'Python \<version\>' runtime. Select "author from scratch" If planning to upload files directly or "container image" if using a docker image (from ECR).
+2. In 'runtime setting' 'edit' the handler to \<python file name\>.\<handler name\> (e.g. main.handler) so that lambda can locate the handler once files uploaded. If using a docker image, this is handled in the docker file with `CMD ["/main.handler"]`
 3. Need to upload all dependencies/packages used.
     - Can zip files, along with all packages/modules used (from your local (virtual) environment, in Lib/site-packages.  Note: in lambda all environment packages will need to be in the base directory as it will not interpret them as part of an environment so 'import' calls to packages will look in the base directory where the python script is located)
     - In this project, we use a docker image. In which case select 'container image' when creating lambda function. You may want to have a docker image ready to test.
