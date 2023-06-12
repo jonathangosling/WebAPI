@@ -5,7 +5,7 @@ from fastapi.templating import Jinja2Templates
 from mangum import Mangum
 
 # essentially, this is importing the html files to be returned as a response
-templates = Jinja2Templates(directory="html_files_copy")
+templates = Jinja2Templates(directory="/html_files_copy")
 
 app = FastAPI()   # create FastAPI instance
 handler = Mangum(app) # handler for running on AWS Lambda
