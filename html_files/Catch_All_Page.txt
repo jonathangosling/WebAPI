@@ -1,2 +1,0 @@
-<p>Oops, looks like you've taken a wrong turn. Click <a href="/">here</a> to head back.
-</p>
