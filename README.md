@@ -4,7 +4,10 @@ This repo is used to host my FastAPI script, along with the required dockerfile 
 
 More info can be found at https://jonathangosling.co.uk
 
+"Note from the future: since this project, I have learnt quite a bit about Terraform. Terraform provides an alternate method to create Lambda functions using IaC. Just like this pipeline was set up to completely minimise the manual processes needed for redepolyment after changes (following the method outlined below it'll be as simple as commit new changes to your repo), Terraform can be used to minimise the manual setup - writing it all "as code". [This repo](https://github.com/jonathangosling/terraform_lambda_example) contains example code to deploy and change a Lambda function all using Terraform."
+
 ## Get FastAPI app in python ready for deployment on Lambda
+
 1. Lambda needs a 'handler function' that it can work with. When lambda is run, it will execute the handler function.
 2. Use Mangum for the handler function: "Mangum is an adapter for **running ASGI** (FastAPI is an ASGI web framework) applications in **AWS Lambda** to handle Function URL, API Gateway, ALB, and Lambda@Edge events."
 3. This is highly convenient as it will automatically route the handler function request to our app (FastAPI object) subpaths.
@@ -12,6 +15,7 @@ More info can be found at https://jonathangosling.co.uk
 5. Simply pass the FastAPI app object into Mangum function: handler = Mangum(app)
 
 ## Create Lambda function
+
 1. In Lambda, 'Create function' with a 'Python \<version\>' runtime. Select "author from scratch" If planning to upload files directly or "container image" if using a docker image (from ECR).
 2. In 'runtime setting' 'edit' the handler to \<python file name\>.\<handler name\> (e.g. main.handler) so that lambda can locate the handler once files uploaded. If using a docker image, this is handled in the docker file with `CMD ["/main.handler"]`
 3. Need to upload all dependencies/packages used.
@@ -23,6 +27,7 @@ More info can be found at https://jonathangosling.co.uk
 6. *Can* add a HTTP endpoint directly to the lambda in 'configuration' -> 'function URL' -> 'create function URL' -> 'Auth type' NONE for public access (also add 'configure cross-origin resource sharing) -> Save
 
 ## Dockerfile (and building docker image and pushing to ECR)
+
 1. Create dockerfile:
    - base image 'FROM public.ecr.aws/lambda/python:3.8' for python on lambda
    - COPY requirements.txt and application (main.py) files
@@ -39,6 +44,7 @@ More info can be found at https://jonathangosling.co.uk
    - aws lambda update-function-code --function-name \<your-lambda-function\> --image-uri \<your-aws-account-number\>.dkr.ecr.\<your-availability-zone\>.amazonaws.com/\<your-ecr-repo\>:latest
 
 ## Using CodeBuild to automate the process of building and pushing docker image, and updating lambda
+
 1. Create buildspec.yaml file. This is the file CodeBuild will use to execute comands
     - version: 0.2
     - phases:
@@ -55,8 +61,9 @@ More info can be found at https://jonathangosling.co.uk
 9. Enable 'Privileged' to allow codebuild to build docker images
 10. Edit the service role policies to allow access to ECR and lambda
     - Go to the service role (Can find the service role in 'build details' of the build project)
-    - In permissions policies, click on the CodeBuildBasePolicy…. 
+    - In permissions policies, click on the CodeBuildBasePolicy….
     - Click 'edit policy' and edit the JSON to include these permissions, review and save:
+
 ```json
         {
             "Effect": "Allow",
@@ -87,11 +94,13 @@ More info can be found at https://jonathangosling.co.uk
             "Effect": "Allow"
         },
 ```
+
 11. Test: make a push to github and check
     - CodeBuild runs without any errors (errors can be found in the 'phase details' and 'build logs' of the build project)
     - The lambda function is updated as expected (test the lambda in aws or check the url)
 
-## 	Build REST API on API Gateway:
+## Build REST API on API Gateway
+
 1. Click 'build' on REST API
 2. Create 'New API'
 3. Enter 'API name'
@@ -110,12 +119,13 @@ More info can be found at https://jonathangosling.co.uk
     - Tick 'Configure as proxy resource'
     - Hit 'create resource'
     - Add a get method in the 'proxy' sub directory following the same process as above
-15.  On 'Actions', click 'Deploy API'
-16.  Under 'Deployment stage', select 'new stage'
-17.  Give it a name, i.e. 'dev'
-18.  Click 'deploy'
+15. On 'Actions', click 'Deploy API'
+16. Under 'Deployment stage', select 'new stage'
+17. Give it a name, i.e. 'dev'
+18. Click 'deploy'
 
-## Direct custom URL in Route 53 to API Gateway:
+## Direct custom URL in Route 53 to API Gateway
+
 1. On the API Gateway page, click 'custom domain names'
 2. Click 'create'
 3. Add domain name (jonathangosling.co.uk or api.jonathangosling.co.uk …)
@@ -142,6 +152,7 @@ More info can be found at https://jonathangosling.co.uk
 18. Hit 'create records'
 
 ## Phew, that was a lot of detail (maybe a little too much).
+
 Anyway, here's some links to even more details:
 1. FastAPI on Lambda
    
