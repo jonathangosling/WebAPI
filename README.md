@@ -4,7 +4,7 @@ This repo is used to host my FastAPI script, along with the required dockerfile 
 
 More info can be found at https://jonathangosling.co.uk
 
-"Note from the future: since this project, I have learnt quite a bit about Terraform. Terraform provides an alternate method to create Lambda functions using IaC. Just like this pipeline was set up to completely minimise the manual processes needed for redepolyment after changes (following the method outlined below it'll be as simple as commit new changes to your repo), Terraform can be used to minimise the manual setup - writing it all "as code". [This repo](https://github.com/jonathangosling/terraform_lambda_example) contains example code to deploy and change a Lambda function all using Terraform."
+"Note from the future: since this project, I have learnt quite a bit about Terraform. Terraform provides an alternate method to create Lambda functions using IaC. Just like this pipeline was set up to completely minimise the manual processes needed for redepolyment after changes (following the method outlined below it'll be as simple as committing new changes to your repo), Terraform can be used to minimise the manual setup - writing it all "as code". [This repo](https://github.com/jonathangosling/terraform_lambda_example) contains example code to deploy and change a Lambda function all using Terraform."
 
 ## Get FastAPI app in python ready for deployment on Lambda
 
